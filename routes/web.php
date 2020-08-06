@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "Kelas => XII RPL 4";
+});
+
+Route::get('/me', function () {
+    return ["NIS" => "3103118144", "Name" => "Zellyne Octaviani", "Gender" => "Perempuan", "Phone" => "082241785514", "Class" => "XII RPL 4"];
+});
+
+Route::get('/kontrol', function () {
+    return "latihan control";
 });
