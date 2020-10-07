@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Book;
+use JWTAuth;
 
 class BookController extends Controller
 {
@@ -15,7 +16,14 @@ class BookController extends Controller
      */
     public function index()
     {
-        return Book::get();
+        $Book = Book::all();
+        if ($Book && $Book->count()) {
+            return Response(["message" => "Show data succes", "data" => $Book], 200);
+
+        }else{
+            return Response(["message" => "Data not found", "data" => null], 404);
+        }
+        
         //
     }
 
@@ -120,4 +128,9 @@ class BookController extends Controller
         return "Data Berhasil dihapus";
         //
     }
+    public function __construct() {
+        $this->middleware('auth:api');
+    }
+
+
 }

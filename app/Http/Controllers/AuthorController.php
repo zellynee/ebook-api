@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Author;
-
+use JWTAuth;
 class AuthorController extends Controller
 {
     /**
@@ -127,5 +127,8 @@ class AuthorController extends Controller
     
             return "Data berhasil dihapus";
        
+    }
+    public function __construct(){
+        $this->middleware('auth:api');
     }
 }
